@@ -87,7 +87,9 @@ confiança e resultados.
 
 <div class="hero-buttons">
 
-<a href="#" class="btn-primary">
+<a href="https://wa.me/559691833600"
+   class="btn-primary"
+   target="_blank">
 <i class="fab fa-whatsapp"></i>
 Fale no WhatsApp
 </a>
@@ -429,6 +431,7 @@ Insira a senha para liberar a edição do calendário e gerenciar eventos.
           <i class="fas fa-calendar-check"></i>
         </button>
       </form>
+      <div id="visitList"></div>
     </div>
   </div>
 </section>
@@ -489,9 +492,8 @@ confiança e resultados.
 
 <div class="social-icons">
 
-<a href="#">
-<i class="fab fa-instagram"></i>
-</a>
+<a href="https://www.instagram.com/six_oficial27/"
+   target="_blank">
 
 <a href="#">
 <i class="fab fa-facebook-f"></i>
@@ -809,59 +811,9 @@ function handleEventSubmit(e) {
   loginMessage.style.color = '#b5ffb5';
 }
 
-function loadVisits() {
-  const stored = localStorage.getItem(visitStorageKey);
-  if (stored) {
-    try {
-      visits = JSON.parse(stored);
-    } catch {
-      visits = [];
-    }
-  }
-  renderVisits();
-}
+/* AGENDAMENTOS */
 
-function saveVisits() {
-  localStorage.setItem(visitStorageKey, JSON.stringify(visits));
-}
-
-function formatVisitDate(dateString) {
-  const dateObj = new Date(dateString);
-  return dateObj.toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  });
-}
-
-function renderVisits() {
-  visitList.innerHTML = '';
-
-  if (!visits.length) {
-    visitList.innerHTML = '<p style="color:#555;">Nenhum agendamento de visita cadastrado.</p>';
-    return;
-  }
-
-  visits.forEach(visit => {
-    const card = document.createElement('div');
-    card.className = 'booking-card';
-    const whatsappText = `Agendamento de visita: ${visit.name} - ${visit.email} - ${visit.phone}. Data: ${formatVisitDate(visit.date)} às ${visit.time}.`;
-    card.innerHTML = `
-      <div class="booking-info">
-        <p><strong>${visit.name}</strong></p>
-        <p>${visit.email}</p>
-        <p>${visit.phone}</p>
-        <p>${formatVisitDate(visit.date)} ⏰ ${visit.time}</p>
-      </div>
-      <a class="btn-secondary whatsapp-booking" href="https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappText)}" target="_blank" rel="noopener noreferrer">
-        Enviar no WhatsApp
-      </a>
-    `;
-    visitList.appendChild(card);
-  });
-}
-
-function handleVisitSubmit(e) {
+visitForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const name = visitNameInput.value.trim();
@@ -871,27 +823,27 @@ function handleVisitSubmit(e) {
   const time = visitTimeInput.value;
 
   if (!name || !email || !phone || !date || !time) {
-    alert('Preencha todos os campos obrigatórios antes de agendar.');
+    alert('Preencha todos os campos');
     return;
   }
 
-  const visitData = {
-    name,
-    email,
-    phone,
-    date,
-    time
-  };
+  const message = `📅 Novo Agendamento
 
-  visits.push(visitData);
-  saveVisits();
-  renderVisits();
+Nome: ${name}
+Email: ${email}
+Telefone: ${phone}
+Data: ${date}
+Hora: ${time}`;
+
+  const url = `https://wa.me/559691833600?text=${encodeURIComponent(message)}`;
+
+  window.open(url, '_blank');
+
   visitForm.reset();
+});
 
-  const whatsappMessage = `Novo agendamento de visita:\nNome: ${name}\nE-mail: ${email}\nTelefone: ${phone}\nData: ${formatVisitDate(date)}\nHorário: ${time}`;
-  const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(whatsappUrl, '_blank');
-}
+
+loadVisits();
 
 function handleLogin() {
   const password = adminPasswordInput.value.trim();
@@ -917,7 +869,6 @@ logoutButton.addEventListener('click', () => setAdminMode(false));
 togglePasswordButton.addEventListener('click', togglePasswordVisibility);
 cancelEditButton.addEventListener('click', cancelEdit);
 eventForm.addEventListener('submit', handleEventSubmit);
-visitForm.addEventListener('submit', handleVisitSubmit);
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -942,7 +893,6 @@ window.addEventListener('appinstalled', () => {
 
 generateCalendarDays();
 loadEvents();
-loadVisits();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -951,6 +901,37 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('Falha ao registrar Service Worker:', err));
   });
 }
+
+
+visitForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = visitNameInput.value.trim();
+  const email = visitEmailInput.value.trim();
+  const phone = visitPhoneInput.value.trim();
+  const date = visitDateInput.value;
+  const time = visitTimeInput.value;
+
+  if (!name || !email || !phone || !date || !time) {
+    alert('Preencha todos os campos');
+    return;
+  }
+
+  const message =
+`📅 Novo Agendamento
+
+Nome: ${name}
+Email: ${email}
+Telefone: ${phone}
+Data: ${date}
+Hora: ${time}`;
+
+  const url = `https://wa.me/559691833600?text=${encodeURIComponent(message)}`;
+
+  window.open(url, '_blank');
+
+  visitForm.reset();
+});
 
 </script>
 
