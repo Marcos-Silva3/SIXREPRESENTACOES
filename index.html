@@ -582,7 +582,7 @@ menuToggle.addEventListener('click', () => {
 /* EVENTOS */
 
 const ADMIN_PASSWORD = '1234';
-const storageKey = 'sixRepresentacoesEventos';
+const storageKeyEvents = 'sixRepresentacoesEventos';
 const months = [
   'JAN','FEV','MAR','ABR','MAI','JUN',
   'JUL','AGO','SET','OUT','NOV','DEZ'
@@ -606,7 +606,7 @@ const visitDateInput = document.getElementById('visitDate');
 const visitTimeInput = document.getElementById('visitTime');
 const visitList = document.getElementById('visitList');
 const visitStorageKey = 'sixRepresentacoesAgendamentos';
-const whatsappPhone = '+559691833600';
+const whatsappPhone = '559691833600';
 
 let events = [];
 let visits = [];
@@ -622,20 +622,29 @@ function formatEventDate(dateString) {
 }
 
 function saveEvents() {
-  localStorage.setItem(storageKey, JSON.stringify(events));
+  try {
+    localStorage.setItem(storageKeyEvents, JSON.stringify(events));
+  } catch (error) {
+    console.error('Erro ao salvar eventos no localStorage:', error);
+  }
 }
 
 function loadEvents() {
-  const stored = localStorage.getItem(storageKey);
+  events = [];
+  const stored = localStorage.getItem(storageKeyEvents);
   if (stored) {
     try {
-      events = JSON.parse(stored);
-    } catch {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        events = parsed;
+      }
+    } catch (error) {
+      console.error('Erro ao carregar eventos do localStorage:', error);
       events = [];
     }
   }
 
-  if (!events || !events.length) {
+  if (!events.length) {
     events = [
       {
         title: 'Feira Industrial 2025',
@@ -745,6 +754,36 @@ function deleteEvent(index) {
   renderEvents();
   loginMessage.textContent = 'Evento excluído com sucesso.';
   loginMessage.style.color = '#fff';
+}
+
+function handleEventSubmit(e) {
+  e.preventDefault();
+
+  const title = document.getElementById('eventTitle').value.trim();
+  const date = document.getElementById('eventDate').value;
+  const time = document.getElementById('eventTime').value;
+  const location = document.getElementById('eventLocation').value.trim();
+
+  if (!title || !date || !time || !location) {
+    loginMessage.textContent = 'Preencha todos os campos antes de salvar.';
+    loginMessage.style.color = '#ffb3b3';
+    return;
+  }
+
+  const eventData = { title, date, time, location };
+
+  if (editIndex !== null) {
+    events[editIndex] = eventData;
+    loginMessage.textContent = 'Evento atualizado com sucesso.';
+  } else {
+    events.push(eventData);
+    loginMessage.textContent = 'Evento adicionado com sucesso.';
+  }
+
+  saveEvents();
+  renderEvents();
+  cancelEdit();
+  loginMessage.style.color = '#b5ffb5';
 }
 
 function loadVisits() {
