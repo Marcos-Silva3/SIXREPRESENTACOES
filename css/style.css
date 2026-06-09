@@ -347,16 +347,21 @@ section{
 /* GRID mais elegante */
 #catalogos .services-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:28px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:34px;
 }
 
 /* CARD PREMIUM (novo padrão) */
 #catalogos .card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:18px;
   background:linear-gradient(145deg,#0f0f0f,#050505);
   border:1px solid rgba(255,0,0,.12);
   border-radius:26px;
-  padding:22px;
+  padding:24px;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -397,19 +402,23 @@ section{
 
 /* imagem catálogo mais premium */
 #catalogos .icon{
-  height:230px;
+  height:420px;
   border-radius:18px;
   overflow:hidden;
   margin-bottom:18px;
   background:#0a0a0a;
   border:1px solid rgba(255,255,255,.05);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 #catalogos .icon img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
   transition:.6s ease;
+  display:block;
 }
 
 #catalogos .card:hover .icon img{
@@ -453,9 +462,9 @@ section{
 /* RESPONSIVO CATÁLOGOS */
 /* ===================================== */
 
-@media(max-width:1100px){
+@media(max-width:900px){
   #catalogos .services-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr;
   }
 }
 
@@ -465,7 +474,7 @@ section{
   }
 
   #catalogos .icon{
-    height:200px;
+    height:320px;
   }
 }
 
@@ -502,6 +511,53 @@ section{
   border-radius:12px;
   border:1px solid #ccc;
   font-family:inherit;
+}
+
+.rastreamento-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:18px;
+  margin-top:24px;
+}
+
+.marca{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:180px;
+  padding:16px 30px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(120deg,#da1212,#b30000);
+  color:#fff;
+  font-weight:800;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  text-decoration:none;
+  box-shadow:0 14px 28px rgba(255,0,0,.22);
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, filter .25s ease;
+}
+
+.marca:hover{
+  transform:translateY(-2px);
+  box-shadow:0 20px 36px rgba(255,0,0,.28);
+  background:linear-gradient(120deg,#ff1f1f,#c40000);
+}
+
+.marca.premium{
+  position:relative;
+  border:1px solid rgba(255,0,0,.45);
+  background:linear-gradient(135deg,#d40000,#7f0000);
+  color:#fff;
+  box-shadow:0 16px 35px rgba(255,0,0,.22);
+}
+
+.marca.premium:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 45px rgba(255,0,0,.32);
+  background:linear-gradient(135deg,#ff1f1f,#940000);
 }
 
 /* ===================================== */
@@ -619,6 +675,218 @@ section{
 .admin-box input:focus{
   outline:none;
   border-color:red;
+}
+
+.admin-login{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.admin-login-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.password-field{
+  position:relative;
+  width:100%;
+}
+
+.password-field input{
+  width:100%;
+  padding-right:56px;
+}
+
+.password-toggle{
+  position:absolute;
+  top:50%;
+  right:12px;
+  transform:translateY(-50%);
+  background:transparent;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  padding:6px;
+}
+
+.password-toggle:hover{
+  color:#ff4d4d;
+}
+
+.admin-message{
+  color:#bbb;
+  font-size:14px;
+  min-height:20px;
+}
+
+.event-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.event-actions button{
+  min-width:100px;
+}
+
+.booking-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.booking-info-panel{
+  background:#f8f8f8;
+  border-radius:30px;
+  padding:40px 30px;
+  color:#111;
+  box-shadow:0 30px 60px rgba(0,0,0,.08);
+}
+
+.info-item{
+  display:flex;
+  gap:18px;
+  margin-bottom:28px;
+}
+
+.info-item:last-child{
+  margin-bottom:0;
+}
+
+.info-icon{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  background:red;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:24px;
+}
+
+.info-item h4{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.info-item p{
+  color:#555;
+  line-height:1.7;
+}
+
+.booking-form{
+  background:#fff;
+  border-radius:30px;
+  padding:35px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  box-shadow:0 30px 60px rgba(0,0,0,.08);
+}
+
+.booking-form label{
+  display:block;
+  margin-bottom:10px;
+  color:#222;
+  font-weight:700;
+  font-size:14px;
+}
+
+.booking-fields-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:20px;
+}
+
+.form-row{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"],
+.form-row input[type="date"],
+.form-row input[type="time"],
+.form-row input[type="file"]{
+  width:100%;
+  padding:18px 20px;
+  border-radius:14px;
+  border:1px solid #ddd;
+  background:#f7f7f7;
+  color:#111;
+  font-family:inherit;
+}
+
+.file-row input[type="file"]{
+  padding:12px 20px;
+}
+
+.booking-submit{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:18px 0;
+  border-radius:16px;
+  font-size:16px;
+}
+
+.booking-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.booking-card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:24px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.booking-info p{
+  margin:0;
+  color:#ddd;
+}
+
+.whatsapp-booking{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 22px;
+  border-radius:14px;
+  text-transform:uppercase;
+  font-weight:700;
+  transition:.3s;
+}
+
+.whatsapp-booking:hover{
+  background:#f1f1f1;
+  color:black;
+}
+
+@media(max-width:900px){
+  .booking-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  .booking-fields-row{
+    grid-template-columns:1fr;
+  }
 }
 
 /* ===================================== */

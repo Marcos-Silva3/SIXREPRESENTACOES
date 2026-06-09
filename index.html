@@ -50,7 +50,7 @@
 
 </nav>
 
-<a href="#" class="btn-whatsapp">
+<a href="https://wa.me/559691833600" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
 <i class="fab fa-whatsapp"></i>
 WhatsApp
 </a>
@@ -230,11 +230,12 @@ Conheça nossos serviços
     
     <div class="tracking-box">
 
-<a class="marca"href="https://www.tbl.com.br/RastreamentoCarga#" target="_blank" target="_blank">Bertolini</a>
-<a class="marca"href="https://ssw.inf.br/2/rastreamento_dest?pwd=2&" target="_blank">Norte Brasil</a>
+      <div class="rastreamento-links">
+        <a class="marca premium" href="https://www.tbl.com.br/RastreamentoCarga#" target="_blank" rel="noopener noreferrer">Bertolini</a>
+        <a class="marca premium" href="https://ssw.inf.br/2/rastreamento_dest?pwd=2&" target="_blank" rel="noopener noreferrer">Norte Brasil</a>
+      </div>
 
-
-</div>
+    </div>
 
 </div>
 
@@ -299,6 +300,22 @@ Conheça nossos serviços
 <div>14</div>
 
 <div class="active-day">15</div>
+<div>16</div>
+<div>17</div>
+<div>18</div>
+<div>19</div>
+<div>20</div>
+<div>21</div>
+<div>22</div>
+<div>23</div>
+<div>24</div>
+<div>25</div>
+<div>26</div>
+<div>27</div>
+<div>28</div>
+<div>29</div>
+<div>30</div>
+<div>31</div>
 
 </div>
 
@@ -335,10 +352,24 @@ Painel Administrativo
 </h3>
 
 <p>
-Adicione novos eventos diretamente no calendário.
+Insira a senha para liberar a edição do calendário e gerenciar eventos.
 </p>
 
-<form id="eventForm">
+<div class="admin-login">
+  <div class="password-field">
+    <input type="password" id="adminPassword" placeholder="Senha administrativa">
+    <button type="button" class="password-toggle" id="togglePassword" aria-label="Mostrar senha">
+      <i class="fas fa-eye"></i>
+    </button>
+  </div>
+  <div class="admin-login-actions">
+    <button type="button" class="btn-primary" id="loginButton">Entrar</button>
+    <button type="button" class="btn-secondary" id="logoutButton" style="display:none;">Sair</button>
+  </div>
+  <p id="loginMessage" class="admin-message"></p>
+</div>
+
+<form id="eventForm" style="display:none;">
 
 <input type="text" id="eventTitle" placeholder="Nome do evento" required>
 
@@ -348,12 +379,13 @@ Adicione novos eventos diretamente no calendário.
 
 <input type="text" id="eventLocation" placeholder="Local do evento" required>
 
-<button type="submit" class="btn-primary">
-
-<i class="fas fa-plus"></i>
-Adicionar Evento
-
-</button>
+<div class="admin-form-actions">
+  <button type="submit" class="btn-primary" id="saveEventButton">
+    <i class="fas fa-plus"></i>
+    Adicionar Evento
+  </button>
+  <button type="button" class="btn-secondary" id="cancelEditButton" style="display:none;">Cancelar</button>
+</div>
 
 </form>
 
@@ -363,6 +395,71 @@ Adicionar Evento
 
 </div>
 
+</section>
+
+<section class="white-section" id="agendamentos">
+  <div class="container">
+    <div class="section-title">
+      <h3>Agendamentos de <span>Visita</span></h3>
+      <div class="divider"></div>
+    </div>
+
+    <div class="booking-wrapper">
+      <div class="booking-info-panel">
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
+          <div>
+            <h4>Agende sua visita</h4>
+            <p>Escolha a data e horário que melhor lhe atende.</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-check-circle"></i></div>
+          <div>
+            <h4>Confirmação</h4>
+            <p>Receba a confirmação e nossa equipe entrará em contato.</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="visitForm" class="booking-form">
+        <div class="booking-fields-row">
+          <div class="form-row">
+            <label for="visitName">Nome completo</label>
+            <input type="text" id="visitName" placeholder="Seu nome" required>
+          </div>
+
+          <div class="form-row">
+            <label for="visitEmail">E-mail</label>
+            <input type="email" id="visitEmail" placeholder="seu@email.com" required>
+          </div>
+
+          <div class="form-row">
+            <label for="visitPhone">Telefone</label>
+            <input type="tel" id="visitPhone" placeholder="(11) 99999-9999" required>
+          </div>
+        </div>
+
+        <div class="booking-fields-row">
+          <div class="form-row">
+            <label for="visitDate">Data da visita</label>
+            <input type="date" id="visitDate" required>
+          </div>
+
+          <div class="form-row">
+            <label for="visitTime">Horário</label>
+            <input type="time" id="visitTime" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary booking-submit">
+          Agendar Visita
+          <i class="fas fa-calendar-check"></i>
+        </button>
+      </form>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -446,7 +543,7 @@ confiança e resultados.
 <div class="copyright">
 
 <p>
-© 2025 SIX REPRESENTAÇÕES — Todos os direitos reservados.
+© 2025 SIX REPRESENTAÇÕES — <a href="todos-direitos-reservados.html" target="_blank">Todos os direitos reservados</a>.
 </p>
 
 <p>
@@ -464,7 +561,7 @@ Marcos Pinheiro
 
 </footer>
 
-<a href="#" class="whatsapp-float">
+<a href="https://wa.me/559691833600" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
 <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -484,63 +581,284 @@ menuToggle.addEventListener('click', () => {
 
 /* EVENTOS */
 
+const ADMIN_PASSWORD = '1234';
+const storageKey = 'sixRepresentacoesEventos';
+const months = [
+  'JAN','FEV','MAR','ABR','MAI','JUN',
+  'JUL','AGO','SET','OUT','NOV','DEZ'
+];
+
+const eventList = document.getElementById('event-list');
 const eventForm = document.getElementById('eventForm');
+const adminPasswordInput = document.getElementById('adminPassword');
+const togglePasswordButton = document.getElementById('togglePassword');
+const loginButton = document.getElementById('loginButton');
+const logoutButton = document.getElementById('logoutButton');
+const loginMessage = document.getElementById('loginMessage');
+const saveEventButton = document.getElementById('saveEventButton');
+const cancelEditButton = document.getElementById('cancelEditButton');
 
-eventForm.addEventListener('submit', function(e){
+const visitForm = document.getElementById('visitForm');
+const visitNameInput = document.getElementById('visitName');
+const visitEmailInput = document.getElementById('visitEmail');
+const visitPhoneInput = document.getElementById('visitPhone');
+const visitDateInput = document.getElementById('visitDate');
+const visitTimeInput = document.getElementById('visitTime');
+const visitList = document.getElementById('visitList');
+const visitStorageKey = 'sixRepresentacoesAgendamentos';
+const whatsappPhone = '+559691833600';
 
+let events = [];
+let visits = [];
+let editIndex = null;
+let isAdmin = false;
+
+function formatEventDate(dateString) {
+  const dateObj = new Date(dateString);
+  return {
+    day: dateObj.getDate(),
+    month: months[dateObj.getMonth()] || ''
+  };
+}
+
+function saveEvents() {
+  localStorage.setItem(storageKey, JSON.stringify(events));
+}
+
+function loadEvents() {
+  const stored = localStorage.getItem(storageKey);
+  if (stored) {
+    try {
+      events = JSON.parse(stored);
+    } catch {
+      events = [];
+    }
+  }
+
+  if (!events || !events.length) {
+    events = [
+      {
+        title: 'Feira Industrial 2025',
+        date: '2025-05-15',
+        time: '09:00',
+        location: 'São Paulo - SP'
+      }
+    ];
+    saveEvents();
+  }
+
+  renderEvents();
+}
+
+function setAdminMode(enabled) {
+  isAdmin = enabled;
+  eventForm.style.display = enabled ? 'flex' : 'none';
+  logoutButton.style.display = enabled ? 'inline-block' : 'none';
+  loginButton.style.display = enabled ? 'none' : 'inline-block';
+  adminPasswordInput.style.display = enabled ? 'none' : 'block';
+  adminPasswordInput.value = '';
+  cancelEdit();
+  loginMessage.textContent = enabled ? 'Acesso autorizado. Agora você pode gerenciar eventos.' : 'Painel bloqueado. Insira a senha.';
+  loginMessage.style.color = enabled ? '#fff' : '#bbb';
+  renderEvents();
+}
+
+function renderEvents() {
+  eventList.innerHTML = '';
+
+  if (!events.length) {
+    eventList.innerHTML = '<p style="color:#bbb;">Nenhum evento cadastrado.</p>';
+    return;
+  }
+
+  events.forEach((event, index) => {
+    const { day, month } = formatEventDate(event.date);
+    const card = document.createElement('div');
+    card.className = 'event-card';
+    card.innerHTML = `
+      <div class="event-date">
+        <strong>${day}</strong>
+        <span>${month}</span>
+      </div>
+      <div>
+        <h4>${event.title}</h4>
+        <p>⏰ ${event.time}</p>
+        <p>📍 ${event.location}</p>
+      </div>
+    `;
+
+    if (isAdmin) {
+      const actions = document.createElement('div');
+      actions.className = 'event-actions';
+      actions.innerHTML = `
+        <button type="button" class="btn-secondary edit-btn" data-index="${index}">Editar</button>
+        <button type="button" class="btn-secondary delete-btn" data-index="${index}">Excluir</button>
+      `;
+      card.appendChild(actions);
+    }
+
+    eventList.appendChild(card);
+  });
+
+  attachActionListeners();
+}
+
+function attachActionListeners() {
+  eventList.querySelectorAll('.edit-btn').forEach(button => {
+    button.addEventListener('click', () => startEdit(parseInt(button.dataset.index, 10)));
+  });
+
+  eventList.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', () => deleteEvent(parseInt(button.dataset.index, 10)));
+  });
+}
+
+function startEdit(index) {
+  editIndex = index;
+  const event = events[index];
+
+  document.getElementById('eventTitle').value = event.title;
+  document.getElementById('eventDate').value = event.date;
+  document.getElementById('eventTime').value = event.time;
+  document.getElementById('eventLocation').value = event.location;
+
+  saveEventButton.innerHTML = '<i class="fas fa-save"></i> Salvar evento';
+  cancelEditButton.style.display = 'inline-block';
+  loginMessage.textContent = 'Editando evento. Faça as alterações e clique em salvar.';
+  loginMessage.style.color = '#fff';
+}
+
+function cancelEdit() {
+  editIndex = null;
+  eventForm.reset();
+  saveEventButton.innerHTML = '<i class="fas fa-plus"></i> Adicionar Evento';
+  cancelEditButton.style.display = 'none';
+}
+
+function deleteEvent(index) {
+  if (!confirm('Deseja realmente excluir este evento?')) {
+    return;
+  }
+
+  events.splice(index, 1);
+  saveEvents();
+  renderEvents();
+  loginMessage.textContent = 'Evento excluído com sucesso.';
+  loginMessage.style.color = '#fff';
+}
+
+function loadVisits() {
+  const stored = localStorage.getItem(visitStorageKey);
+  if (stored) {
+    try {
+      visits = JSON.parse(stored);
+    } catch {
+      visits = [];
+    }
+  }
+  renderVisits();
+}
+
+function saveVisits() {
+  localStorage.setItem(visitStorageKey, JSON.stringify(visits));
+}
+
+function formatVisitDate(dateString) {
+  const dateObj = new Date(dateString);
+  return dateObj.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+}
+
+function renderVisits() {
+  visitList.innerHTML = '';
+
+  if (!visits.length) {
+    visitList.innerHTML = '<p style="color:#555;">Nenhum agendamento de visita cadastrado.</p>';
+    return;
+  }
+
+  visits.forEach(visit => {
+    const card = document.createElement('div');
+    card.className = 'booking-card';
+    const whatsappText = `Agendamento de visita: ${visit.name} - ${visit.email} - ${visit.phone}. Data: ${formatVisitDate(visit.date)} às ${visit.time}.`;
+    card.innerHTML = `
+      <div class="booking-info">
+        <p><strong>${visit.name}</strong></p>
+        <p>${visit.email}</p>
+        <p>${visit.phone}</p>
+        <p>${formatVisitDate(visit.date)} ⏰ ${visit.time}</p>
+      </div>
+      <a class="btn-secondary whatsapp-booking" href="https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappText)}" target="_blank" rel="noopener noreferrer">
+        Enviar no WhatsApp
+      </a>
+    `;
+    visitList.appendChild(card);
+  });
+}
+
+function handleVisitSubmit(e) {
   e.preventDefault();
 
-  const title = document.getElementById('eventTitle').value;
-  const date = document.getElementById('eventDate').value;
-  const time = document.getElementById('eventTime').value;
-  const location = document.getElementById('eventLocation').value;
+  const name = visitNameInput.value.trim();
+  const email = visitEmailInput.value.trim();
+  const phone = visitPhoneInput.value.trim();
+  const date = visitDateInput.value;
+  const time = visitTimeInput.value;
 
-  const eventList = document.getElementById('event-list');
+  if (!name || !email || !phone || !date || !time) {
+    alert('Preencha todos os campos obrigatórios antes de agendar.');
+    return;
+  }
 
-  const dateObj = new Date(date);
+  const visitData = {
+    name,
+    email,
+    phone,
+    date,
+    time
+  };
 
-  const day = dateObj.getDate();
+  visits.push(visitData);
+  saveVisits();
+  renderVisits();
+  visitForm.reset();
 
-  const months = [
-    "JAN","FEV","MAR","ABR","MAI","JUN",
-    "JUL","AGO","SET","OUT","NOV","DEZ"
-  ];
+  const whatsappMessage = `Novo agendamento de visita:\nNome: ${name}\nE-mail: ${email}\nTelefone: ${phone}\nData: ${formatVisitDate(date)}\nHorário: ${time}`;
+  const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+  window.open(whatsappUrl, '_blank');
+}
 
-  const month = months[dateObj.getMonth()];
+function handleLogin() {
+  const password = adminPasswordInput.value.trim();
 
-  const newEvent = document.createElement('div');
+  if (password === ADMIN_PASSWORD) {
+    setAdminMode(true);
+    loginMessage.style.color = '#b5ffb5';
+  } else {
+    loginMessage.textContent = 'Senha incorreta. Tente novamente.';
+    loginMessage.style.color = '#ff9999';
+  }
+}
 
-  newEvent.classList.add('event-card');
+function togglePasswordVisibility() {
+  const isPassword = adminPasswordInput.type === 'password';
+  adminPasswordInput.type = isPassword ? 'text' : 'password';
+  togglePasswordButton.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+  togglePasswordButton.setAttribute('aria-label', isPassword ? 'Ocultar senha' : 'Mostrar senha');
+}
 
-  newEvent.innerHTML = `
+loginButton.addEventListener('click', handleLogin);
+logoutButton.addEventListener('click', () => setAdminMode(false));
+togglePasswordButton.addEventListener('click', togglePasswordVisibility);
+cancelEditButton.addEventListener('click', cancelEdit);
+eventForm.addEventListener('submit', handleEventSubmit);
+visitForm.addEventListener('submit', handleVisitSubmit);
 
-    <div class="event-date">
-
-      <strong>${day}</strong>
-
-      <span>${month}</span>
-
-    </div>
-
-    <div>
-
-      <h4>${title}</h4>
-
-      <p>⏰ ${time}</p>
-
-      <p>📍 ${location}</p>
-
-    </div>
-
-  `;
-
-  eventList.appendChild(newEvent);
-
-  alert('Evento adicionado com sucesso!');
-
-  eventForm.reset();
-
-});
+loadEvents();
+loadVisits();
 
 </script>
 
