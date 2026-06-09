@@ -1,4 +1,102 @@
 /* ===================================== */
+/* CORREÇÃO EVENTOS E AGENDAMENTOS */
+/* ===================================== */
+
+.event-admin-wrapper,
+.booking-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+.calendar,
+.admin-box,
+.booking-form,
+.booking-info-panel{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+
+.calendar-grid{
+  width:100%;
+  overflow-x:auto;
+}
+
+.calendar-grid div{
+  min-width:0;
+  word-break:break-word;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea,
+.booking-form button{
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+.booking-fields-row{
+  width:100%;
+}
+
+.event-card{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  flex-wrap:wrap;
+}
+
+.event-date{
+  flex-shrink:0;
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+
+  .event-admin-wrapper,
+  .booking-wrapper{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .calendar,
+  .admin-box,
+  .booking-form,
+  .booking-info-panel{
+    padding:20px;
+  }
+
+  .calendar-grid{
+    gap:4px;
+  }
+
+  .calendar-grid div{
+    padding:8px 4px;
+    font-size:12px;
+  }
+
+  .event-card{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .event-date{
+    width:70px;
+    height:70px;
+  }
+
+  .event-date strong{
+    font-size:30px;
+  }
+
+  .booking-fields-row{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ===================================== */
 /* RESET */
 /* ===================================== */
 
