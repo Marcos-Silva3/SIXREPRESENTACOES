@@ -4,6 +4,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff0000">
+<link rel="manifest" href="manifest.json">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -90,9 +92,9 @@ confiança e resultados.
 Fale no WhatsApp
 </a>
 
-<a href="#servicos" class="btn-secondary">
-Conheça nossos serviços
-</a>
+<button id="installButton" class="btn-secondary" style="display:none;">
+Instalar app
+</button>
 
 </div>
 
@@ -607,6 +609,8 @@ const visitTimeInput = document.getElementById('visitTime');
 const visitList = document.getElementById('visitList');
 const visitStorageKey = 'sixRepresentacoesAgendamentos';
 const whatsappPhone = '559691833600';
+const installButton = document.getElementById('installButton');
+let deferredPrompt = null;
 
 let events = [];
 let visits = [];
@@ -896,8 +900,37 @@ cancelEditButton.addEventListener('click', cancelEdit);
 eventForm.addEventListener('submit', handleEventSubmit);
 visitForm.addEventListener('submit', handleVisitSubmit);
 
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.style.display = 'inline-flex';
+});
+
+installButton.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const choiceResult = await deferredPrompt.userChoice;
+  if (choiceResult.outcome === 'accepted') {
+    installButton.style.display = 'none';
+  }
+  deferredPrompt = null;
+});
+
+window.addEventListener('appinstalled', () => {
+  installButton.style.display = 'none';
+  console.log('PWA instalado.');
+});
+
 loadEvents();
 loadVisits();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('Service Worker registrado:', reg.scope))
+      .catch(err => console.error('Falha ao registrar Service Worker:', err));
+  });
+}
 
 </script>
 
