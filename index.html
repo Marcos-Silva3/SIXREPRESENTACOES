@@ -264,13 +264,13 @@ Instalar app
 
 <div class="calendar-header">
 
-<span>
+<span id="prevMonth" style="cursor:pointer;">
 <i class="fas fa-chevron-left"></i>
 </span>
 
-<h3>Maio 2025</h3>
+<h3 id="calendarTitle">Junho 2026</h3>
 
-<span>
+<span id="nextMonth" style="cursor:pointer;">
 <i class="fas fa-chevron-right"></i>
 </span>
 
@@ -286,38 +286,7 @@ Instalar app
 <div>SEX</div>
 <div>SÁB</div>
 
-<div>1</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
-<div>5</div>
-<div>6</div>
-<div>7</div>
-<div>8</div>
-<div>9</div>
-<div>10</div>
-<div>11</div>
-<div>12</div>
-<div>13</div>
-<div>14</div>
-
-<div class="active-day">15</div>
-<div>16</div>
-<div>17</div>
-<div>18</div>
-<div>19</div>
-<div>20</div>
-<div>21</div>
-<div>22</div>
-<div>23</div>
-<div>24</div>
-<div>25</div>
-<div>26</div>
-<div>27</div>
-<div>28</div>
-<div>29</div>
-<div>30</div>
-<div>31</div>
+<div id="calendarDays"></div>
 
 </div>
 
@@ -610,12 +579,62 @@ const visitList = document.getElementById('visitList');
 const visitStorageKey = 'sixRepresentacoesAgendamentos';
 const whatsappPhone = '559691833600';
 const installButton = document.getElementById('installButton');
+
+// Calendário dinâmico
+const calendarTitle = document.getElementById('calendarTitle');
+const calendarDays = document.getElementById('calendarDays');
+const prevMonthBtn = document.getElementById('prevMonth');
+const nextMonthBtn = document.getElementById('nextMonth');
+
+let currentCalendarDate = new Date();
 let deferredPrompt = null;
 
 let events = [];
 let visits = [];
 let editIndex = null;
 let isAdmin = false;
+
+function generateCalendarDays() {
+  calendarDays.innerHTML = '';
+  
+  const year = currentCalendarDate.getFullYear();
+  const month = currentCalendarDate.getMonth();
+  
+  const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+                      'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  calendarTitle.textContent = `${monthNames[month]} ${year}`;
+  
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  
+  for (let i = 0; i < firstDay; i++) {
+    const emptyDiv = document.createElement('div');
+    calendarDays.appendChild(emptyDiv);
+  }
+  
+  const today = new Date();
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.textContent = day;
+    dayDiv.style.cursor = 'pointer';
+    
+    if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+      dayDiv.className = 'active-day';
+    }
+    
+    calendarDays.appendChild(dayDiv);
+  }
+}
+
+prevMonthBtn.addEventListener('click', () => {
+  currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+  generateCalendarDays();
+});
+
+nextMonthBtn.addEventListener('click', () => {
+  currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+  generateCalendarDays();
+});
 
 function formatEventDate(dateString) {
   const dateObj = new Date(dateString);
@@ -921,6 +940,7 @@ window.addEventListener('appinstalled', () => {
   console.log('PWA instalado.');
 });
 
+generateCalendarDays();
 loadEvents();
 loadVisits();
 
