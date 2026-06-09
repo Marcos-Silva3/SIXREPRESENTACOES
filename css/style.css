@@ -566,9 +566,15 @@ section{
 
 .event-admin-wrapper{
   display:grid;
-  grid-template-columns:1.5fr 1fr;
+  grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
   gap:40px;
   align-items:start;
+  min-width:0;
+}
+
+.calendar,
+.admin-box {
+  min-width:0;
 }
 
 .calendar{
@@ -576,6 +582,23 @@ section{
   border:1px solid #333;
   border-radius:28px;
   padding:35px;
+}
+
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:12px;
+  text-align:center;
+  overflow-x:auto;
+}
+
+.calendar-grid::-webkit-scrollbar {
+  height:8px;
+}
+
+.calendar-grid::-webkit-scrollbar-thumb {
+  background:rgba(255,255,255,0.15);
+  border-radius:999px;
 }
 
 .calendar-header{
@@ -1021,6 +1044,25 @@ footer{
 
   .hero-logo img{
     height:260px;
+  }
+
+  .calendar-grid{
+    grid-template-columns:repeat(7,minmax(80px,1fr));
+  }
+
+  .calendar-grid div{
+    padding:10px;
+    font-size:14px;
+  }
+
+  .event-card{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .event-date{
+    width:70px;
+    height:70px;
   }
 
   .admin-box{
