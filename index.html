@@ -126,34 +126,52 @@ Instalar app
 
 <div class="card">
 <div class="icon">
-<i class="fas fa-briefcase"></i>
+<i class="fas fa-hard-hat"></i> <!-- Capacete de obra -->
 </div>
-<h4>Representações Comerciais</h4>
-<p>Conectamos sua marca ao mercado com estratégia e eficiência.</p>
-</div>
-
-<div class="card">
-<div class="icon">
-<i class="fas fa-handshake"></i>
-</div>
-<h4>Gestão de Relacionamento</h4>
-<p>Relacionamento próximo e transparente com clientes e parceiros.</p>
+<h4>Construção Civil</h4>
 </div>
 
 <div class="card">
 <div class="icon">
-<i class="fas fa-arrow-trend-up"></i>
+<i class="fas fa-industry"></i> <!-- Fábrica -->
 </div>
-<h4>Expansão de Mercado</h4>
-<p>Abertura de novas oportunidades e aumento de visibilidade.</p>
+<h4>Indústria</h4>
 </div>
 
 <div class="card">
 <div class="icon">
-<i class="fas fa-headset"></i>
+<i class="fas fa-tractor"></i> <!-- Trator -->
 </div>
-<h4>Suporte e Acompanhamento</h4>
-<p>Suporte completo em todas as etapas do processo comercial.</p>
+<h4>Agropecuária</h4>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-tools"></i> <!-- Ferramentas de manutenção -->
+</div>
+<h4>Manutenção e reparos</h4>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-store"></i> <!-- Serviços -->
+</div>
+<h4>Comércio e serviços</h4>
+</div>
+
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-road"></i> <!-- infraestrutura -->
+</div>
+<h4>infraestrutura</h4>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-toolbox"></i> <!-- Soluções em ferramentas -->
+</div>
+<h4>Soluções em Ferramentas</h4>
 </div>
 
 </div>
@@ -215,6 +233,15 @@ Instalar app
         <br>
         <a href="PDFs  CATALAGOS FERRAMENTAS/Ferramentas_utilidades_e_equipamentos_para_jardinagem_agricultura_e_construcao_civil_526d62ff76.pdf" style="color: black;" target="_blank">Download</a>
       </div>
+      <div class="card">
+        <div class="icon">
+          <img src="IMAGENS CATÁLOGOS FERRAMENTAS/yamaguchi-600x600.jpg.webp" alt="" srcset="">
+        </div>
+        <br>
+        <p>YAMAGUCHI</p>
+        <br>
+        <a href="https://yamaguchi.com.br/" style="color: black;" target="_blank">Acessar</a>
+      </div>
       
     </div>
     
@@ -237,7 +264,7 @@ Instalar app
 
       <div class="rastreamento-links">
         <a class="marca premium" href="https://www.tbl.com.br/RastreamentoCarga#" target="_blank" rel="noopener noreferrer">Bertolini</a>
-        <a class="marca premium" href="https://ssw.inf.br/2/rastreamento_dest?pwd=2&" target="_blank" rel="noopener noreferrer">Norte Brasil</a>
+        <a class="marca premium" href="https://ssw.inf.br/2/rastreamento?" target="_blank" rel="noopener noreferrer">Norte Brasil</a>
       </div>
 
     </div>
@@ -253,7 +280,9 @@ Instalar app
 <div class="container">
 
 <div class="section-title">
-<h3>Calendário de <span>Eventos</span></h3>
+<h3>Calendário  de <span>Eventos</span></h3>
+<br>
+<h3>Disponível em <span>Breve</span></h3>
 <div class="divider"></div>
 </div>
 
@@ -370,7 +399,7 @@ Insira a senha para liberar a edição do calendário e gerenciar eventos.
 </div>
 
 </section>
-
+<!--AGENDAMENTO DE VISITAS-->
 <section class="white-section" id="agendamentos">
   <div class="container">
     <div class="section-title">
@@ -520,7 +549,7 @@ Todo o conteúdo deste site é protegido por direitos autorais.
 
 <p>
 Desenvolvido por 
-<a href="https://seusite.com" target="_blank">
+<a href="https://wa.me/5591982397142" target="_blank">
 Marcos Pinheiro
 </a>
 </p>
@@ -807,38 +836,7 @@ function handleEventSubmit(e) {
 }
 
 /* AGENDAMENTOS */
-
-visitForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const name = visitNameInput.value.trim();
-  const email = visitEmailInput.value.trim();
-  const phone = visitPhoneInput.value.trim();
-  const date = visitDateInput.value;
-  const time = visitTimeInput.value;
-
-  if (!name || !email || !phone || !date || !time) {
-    alert('Preencha todos os campos');
-    return;
-  }
-
-  const message = `📅 Novo Agendamento
-
-Nome: ${name}
-Email: ${email}
-Telefone: ${phone}
-Data: ${date}
-Hora: ${time}`;
-
-  const url = `https://wa.me/559691833600?text=${encodeURIComponent(message)}`;
-
-  window.open(url, '_blank');
-
-  visitForm.reset();
-});
-
-
-loadVisits();
+/* AGENDAMENTOS */
 
 function handleLogin() {
   const password = adminPasswordInput.value.trim();
