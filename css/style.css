@@ -150,7 +150,7 @@ header{
 .logo{
   display:flex;
   align-items:center;
-  gap:147px;
+  gap:75px;
 }
 
 .logo img{
