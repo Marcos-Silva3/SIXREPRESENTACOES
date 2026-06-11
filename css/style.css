@@ -143,18 +143,19 @@ header{
 .navbar{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-evenly;
   padding:18px 0;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:15px;
+  gap:147px;
 }
 
 .logo img{
   height:65px;
+  border-radius: 10px;
 }
 
 .logo-text h1{
